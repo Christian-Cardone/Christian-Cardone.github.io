@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://Christian-Cardone.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://Christian-Cardone.github.io/theme/pygments/solarized-dark.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://Christian-Cardone.github.io/theme/pygments/solarized-dark.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/solid.css">
+
+
+
+
+    <link rel="shortcut icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Christian Cardone" />
+<meta name="description" content="There are multiple web services providers that can be used to host a static website (blog). I&#39;ll cover two ways here, the simplest I know that is via Github and a more elaborated one using AWS. Hosting on Github Pages 1. Ensure you have a Github account. First you need …" />
+<meta name="keywords" content="">
+
+
+<meta property="og:site_name" content="Cardone"/>
+<meta property="og:title" content="Hosting a Static Website"/>
+<meta property="og:description" content="There are multiple web services providers that can be used to host a static website (blog). I&#39;ll cover two ways here, the simplest I know that is via Github and a more elaborated one using AWS. Hosting on Github Pages 1. Ensure you have a Github account. First you need …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://Christian-Cardone.github.io/hosting-a-static-website.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-10-29 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://Christian-Cardone.github.io/author/christian-cardone.html">
+<meta property="article:section" content="Data Science"/>
+<meta property="og:image" content="/images/Christian.jpg">
+
+  <title>Cardone &ndash; Hosting a Static Website</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://Christian-Cardone.github.io">
+        <img src="/images/Christian.jpg" alt="Christian Cardone" title="Christian Cardone">
+      </a>
+
+      <h1>
+        <a href="https://Christian-Cardone.github.io">Christian Cardone</a>
+      </h1>
+
+<p>Data Science Blog</p>
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/Christian-Cardone" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="#" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://Christian-Cardone.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="hosting-a-static-website">Hosting a Static Website</h1>
+    <p>
+      Posted on Thu 29 October 2020 in <a href="https://Christian-Cardone.github.io/category/data-science.html">Data Science</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>There are multiple web services providers that can be used to host a static website (blog). I'll cover two ways here, the simplest I know that is via Github and a more elaborated one using AWS.</p>
+<h2>Hosting on Github Pages</h2>
+<h3>1. Ensure you have a Github account.</h3>
+<p>First you need an account, if you don't have one, it's a straight forward process to get one go to <a href="https://github.com/">https://github.com/</a> and Sign up.</p>
+<h4>1.1 Add an SSH key</h4>
+<p>I'll be showing you how to upload stuff into your online repo using a Secure Shell Protocol, so you will need to make sure you have added a public SSH key from your device in your Github account. Useful documents to create the key and how to add it into your Github account can be found <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh">here</a>.</p>
+<h3>2. Create <code>&lt;gitusername&gt;.github.io</code></h3>
+<p>Create an empty Repository that will contain your output content. Name the repository <code>&lt;gitusername&gt;.github.io</code> which will be the name of your website (how other users would access to it). For simplicity do not add any file in your Github repos just yet, leave it fully empty.</p>
+<h3>3. Prepare you content to be uploaded</h3>
+<p>You have two ways to push your content and keeping it up to date</p>
+<h4>Traditional way</h4>
+<p>First you may want initialize git within the output folder of your project.</p>
+<div class="highlight"><pre><span></span><code><span class="err">cd Users/christian.cardone/Projects/Research/blog/output</span>
+<span class="err">git init</span>
+<span class="err">git checkout -b main</span>
+</code></pre></div>
+
+<p>Then you need to add remote origin, commit the content to be uploaded and push it to the remote repo.</p>
+<div class="highlight"><pre><span></span><code><span class="err">git remote add origin git@github.com:&lt;gitusername&gt;/&lt;gitusername&gt;.github.io.git</span>
+<span class="err">git add --all</span>
+<span class="err">git commit -m &quot;My first website article&quot;</span>
+<span class="err">git push origin main</span>
+</code></pre></div>
+
+<p>As you may have noticed, this method can be a bit annoying if you already had a repository on the main active folder of your project.</p>
+<h4>Using <code>gh-pages</code></h4>
+<p>This tool will help you push the only the generated content (from your output folder) in 2 steps, so it's easy an convenient in the long run.
+Go to your project directory in your local device and initialize git (if you haven't already). </p>
+<div class="highlight"><pre><span></span><code><span class="err">git init</span>
+</code></pre></div>
+
+<p>Then use the install the github pages tool and upload your content.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span>
+
+<span class="nn">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="nn">output</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">git</span><span class="nd">@github.com</span><span class="p">:</span><span class="o">&lt;</span><span class="n">gitusername</span><span class="o">&gt;/&lt;</span><span class="n">gitusername</span><span class="o">&gt;.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">git</span> <span class="n">gh</span><span class="o">-</span><span class="n">pages</span><span class="p">:</span><span class="n">main</span>
+</code></pre></div>
+
+<h3>4. Check your website</h3>
+<p>Now you can type on your browser your website address <code>&lt;gitusername&gt;.github.io</code> and see your content alive!</p>
+<h2>Hosting on AWS S3</h2>
+<p>Post it soon..</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://Christian-Cardone.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Cardone ",
+  "url" : "https://Christian-Cardone.github.io",
+  "image": "/images/Christian.jpg",
+  "description": "Cardone - Data Science Notes"
+}
+</script>
+
+
+</body>
+</html>

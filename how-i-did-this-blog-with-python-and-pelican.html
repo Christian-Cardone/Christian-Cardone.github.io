@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://Christian-Cardone.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://Christian-Cardone.github.io/theme/pygments/solarized-dark.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://Christian-Cardone.github.io/theme/pygments/solarized-dark.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/solid.css">
+
+
+
+
+    <link rel="shortcut icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Christian Cardone" />
+<meta name="description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all this is a static blog, which means that there is no live database behind it. Due to this reason you can easily Getting Started Install …" />
+<meta name="keywords" content="Python">
+
+
+<meta property="og:site_name" content="Cardone"/>
+<meta property="og:title" content="How I did this blog with Python (and Pelican)"/>
+<meta property="og:description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all this is a static blog, which means that there is no live database behind it. Due to this reason you can easily Getting Started Install …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://Christian-Cardone.github.io/how-i-did-this-blog-with-python-and-pelican.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-02-27 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://Christian-Cardone.github.io/author/christian-cardone.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="Python"/>
+<meta property="og:image" content="/images/Christian.jpg">
+
+  <title>Cardone &ndash; How I did this blog with Python (and Pelican)</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://Christian-Cardone.github.io">
+        <img src="/images/Christian.jpg" alt="Christian Cardone" title="Christian Cardone">
+      </a>
+
+      <h1>
+        <a href="https://Christian-Cardone.github.io">Christian Cardone</a>
+      </h1>
+
+<p>Data Science Blog</p>
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/Christian-Cardone" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="#" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://Christian-Cardone.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="how-i-did-this-blog-with-python-and-pelican">How I did this blog with Python (and Pelican)</h1>
+    <p>
+      Posted on Thu 27 February 2020 in <a href="https://Christian-Cardone.github.io/category/python.html">Python</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>I'm going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. </p>
+<p>First of all this is a static blog, which means that there is no live database behind it. Due to this reason you can easily </p>
+<h2>Getting Started</h2>
+<p>Install pelican</p>
+<blockquote>
+<p>pip install pelican</p>
+</blockquote>
+<p>Install markdown support, if you want to write your posts using markdown, otherwise not needed (but you need to write them using a reStructeredText '.rst' format)</p>
+<blockquote>
+<p>pip install markdown</p>
+</blockquote>
+<p>I'm using Python 3.8.2 with pelican 4.5.0 and markdown 3.3.3</p>
+<h2>Set up</h2>
+<p>The easiest way to set up (1st timers) is to run the quick start tool that will create a basic layout/structure. The default values are either contained within <code>[ ]</code> or in caps <code>(y/N)</code>, leaving the default values should work just fine.</p>
+<blockquote>
+<p>pelican-quickstart
+christian.cardone@ts-mac-02 blog % pelican-quickstart
+Welcome to pelican-quickstart v4.5.0.</p>
+<p>This script will help you create a new Pelican-based website.</p>
+<p>Please answer the following questions so this script can generate the files
+needed by Pelican.</p>
+<p>Where do you want to create your new web site? [.] 
+What will be the title of this web site? Another Data Science Blog
+Who will be the author of this web site? Christian Cardone
+What will be the default language of this web site? [en]
+Do you want to specify a URL prefix? e.g., https://example.com   (Y/n) n
+Do you want to enable article pagination? (Y/n) n
+What is your time zone? [Europe/Paris] Europe/London
+Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n) Y
+Do you want to upload your website using FTP? (y/N) 
+Do you want to upload your website using SSH? (y/N) 
+Do you want to upload your website using Dropbox? (y/N) 
+Do you want to upload your website using S3? (y/N) 
+Do you want to upload your website using Rackspace Cloud Files? (y/N) 
+Do you want to upload your website using GitHub Pages? (y/N) 
+Done. Your new project is available at /Users/christian.cardone/Projects/Research/blog</p>
+</blockquote>
+<p>Once the set up is over, you should have a directory containing the following structure:</p>
+<div class="highlight"><pre><span></span><code>.
+|-content
+|-Makefile
+|-output
+|-pelicanconf.py
+|-publishconf.py
+|-tasks.py
+</code></pre></div>
+
+<p>The content and output folders would be empty.</p>
+<h2>Adding Content</h2>
+<p>Now you can start writing content under the "content" directory. I added my first post as an md file (but feel free to use rst) and named it "test.md"</p>
+<div class="highlight"><pre><span></span><code>Title: Welcome
+Date: 2010-12-03 10:20
+Category: DataScience
+------------------------
+
+Another Data Science Blog...
+</code></pre></div>
+
+<h2>Generate site</h2>
+<p>To generate the content make sure you are placed on the main directory and run:</p>
+<blockquote>
+<p>pelican content
+Done: Processed 1 article, 0 drafts, 0 pages, 0 hidden pages and 0 draft pages in 0.13 seconds.</p>
+</blockquote>
+<p>Now you will have content generated in the output folder, the new structure should look like this:</p>
+<div class="highlight"><pre><span></span><code>.
+|-content
+    |-test.md
+|-Makefile
+|-output
+    |-achives.html
+    |-author
+    |-authors.html
+    |-categories.html
+    |-category
+    |-index.html
+    |-tags.html
+    |-theme
+    |-welcome.html
+|-pelicanconf.py
+|-publishconf.py
+|-tasks.py
+</code></pre></div>
+
+<p>Note that the content welcome.html has been created including what I wrote in my md file. </p>
+<h2>Preview Site</h2>
+<p>To preview the content of the site, go back to the console and run:</p>
+<p>1 Using pelican
+Go to the output path and execute</p>
+<blockquote>
+<p>cd ~ /Users/christian.cardone/Projects/Research/blog/output
+python -m pelican.server</p>
+</blockquote>
+<p>2 Using development server
+Go to the project directory and run:</p>
+<blockquote>
+<p>cd ~ /Users/christian.cardone/Projects/Research/blog
+make devserver</p>
+</blockquote>
+<p>Once is done, the preview of the site will be hosted in  <a href="http://localhost:8000/">http://localhost:8000/</a> in your browser. And should look similar to this:</p>
+<p><img src="./images/site-temp.png" alt="preview" width="600"/></p>
+<p>For more info regarding pelican take a look at their documentation <a href="https://docs.getpelican.com/en/stable/">https://docs.getpelican.com/en/stable/</a></p>
+<h2>Customisation</h2>
+<p>You can easily change the theme of your site by downloading it from <a href="https://github.com/getpelican/pelican-themes">pelican-themes</a> repo, you can see a preview of all them in <a href="http://www.pelicanthemes.com/">http://www.pelicanthemes.com/</a>. I personally like the Flex theme (repo <a href="https://github.com/alexandrevicenzi/Flex">here</a>), without trying to promote it, I like it because of its useful integrations and features (including dark mode!).</p>
+<p>Once you have selected a theme, you can set it up by changing the <code>pelicanconfig.py</code> file. Simply add a line including the path where you stored the theme.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Theme</span>
+<span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;/Users/christian.cardone/pelican-themes/Flex/&#39;</span>
+</code></pre></div>
+
+<h3>Changing colours (css)</h3>
+<p>Depending on the theme you have selected you can either create a custom.css or modify directly the stylesheets.
+If the theme allows custom CSS stylesheets you can add to the <code>pelicanconf.py</code> something like this:</p>
+<p>The new custom setting can be used like this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;extra/custom.css&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;static/custom.css&#39;</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="n">CUSTOM_CSS</span> <span class="o">=</span> <span class="s1">&#39;static/custom.css&#39;</span>
+</code></pre></div>
+
+<p>Otherwise simply identify the the stylesheets in your local theme repo and change the css files accordingly. For example for Flex the stylesheets can be found on:</p>
+<div class="highlight"><pre><span></span><code>/Users/christian.cardone/pelican-themes/Flex/
+
+|-static
+    |-stylesheet
+        |-dark-theme.min.css
+        |-style.min.css
+</code></pre></div>
+
+<p>These files are for the dark and light themes respectively. You can also change there the font type and size if you desire.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://Christian-Cardone.github.io/tag/python.html">Python</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://Christian-Cardone.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Cardone ",
+  "url" : "https://Christian-Cardone.github.io",
+  "image": "/images/Christian.jpg",
+  "description": "Cardone - Data Science Notes"
+}
+</script>
+
+
+</body>
+</html>
