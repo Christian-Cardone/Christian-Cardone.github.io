@@ -47,7 +47,7 @@
 
 <meta name="author" content="Christian Cardone" />
 <meta name="description" content="There are multiple web services providers that can be used to host a static website (blog). In this post I&#39;ll cover the simplest method I know that is via Github Pages. Hosting on Github Pages 1. Ensure you have a Github account. First you need an account, if you don&#39;t …" />
-<meta name="keywords" content="github, website">
+<meta name="keywords" content="Github, Website">
 
 
 <meta property="og:site_name" content="Cardone"/>
@@ -56,12 +56,12 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://Christian-Cardone.github.io/hosting-a-static-website-on-github.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-10-29 00:00:00+00:00"/>
+<meta property="article:published_time" content="2020-10-31 00:00:00+00:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://Christian-Cardone.github.io/author/christian-cardone.html">
 <meta property="article:section" content="Other"/>
-<meta property="article:tag" content="github"/>
-<meta property="article:tag" content="website"/>
+<meta property="article:tag" content="Github"/>
+<meta property="article:tag" content="Website"/>
 <meta property="og:image" content="/images/Christian.jpg">
 
   <title>Cardone &ndash; Hosting a Static Website (on Github)</title>
@@ -113,7 +113,7 @@
       
     <h1 id="hosting-a-static-website-on-github">Hosting a Static Website (on Github)</h1>
     <p>
-      Posted on Thu 29 October 2020 in <a href="https://Christian-Cardone.github.io/category/other.html">Other</a>
+      Posted on Sat 31 October 2020 in <a href="https://Christian-Cardone.github.io/category/other.html">Other</a>
 
     </p>
   </header>
@@ -161,8 +161,9 @@ Go to your project directory in your local device and initialize git (if you hav
 <h3>4. Check your website</h3>
 <p>Now you can type on your browser your website address <code>&lt;gitusername&gt;.github.io</code> and see your content alive!</p>
 <h3>Extra Add your own domain name</h3>
-<p>Add a CNAME file to your repository (within Output folder) and include there your domain, Example:</p>
-<p>.
+<h4>Subdomain (www)</h4>
+<p>Add a <code>CNAME</code> file to your repository (within Output folder) and include there your custom domain, Example:</p>
+<div class="highlight"><pre><span></span><code>.
 |-output
     |-achives.html
     |-author
@@ -173,7 +174,9 @@ Go to your project directory in your local device and initialize git (if you hav
     |-tags.html
     |-theme
     |-welcome.html
-    |-CNAME</p>
+    |-CNAME
+</code></pre></div>
+
 <p>And inside CNAME</p>
 <div class="highlight"><pre><span></span><code>www.christiancardone.com
 </code></pre></div>
@@ -184,11 +187,44 @@ Example:</p>
 -------------------------------
 www     | CNAME | 1h    | christian-cardone.github.io
 </code></pre></div>
+
+<p>After this you should be able to access to your website using your www.<yourdomain></p>
+<h4>Setting up APEX domain</h4>
+<p>To set up your raw domain AKA APEX domain (example christiancardone.com), you need to configure the same 2 things; CNAME entry and DNS.</p>
+<p>First add to your <code>CNAME</code> file the custom domain, following the example your <code>CNAME</code> would look like:</p>
+<div class="highlight"><pre><span></span><code>www.christiancardone.com
+christiancardone.com
+</code></pre></div>
+
+<p>Second go again to your DNS provider and create either an <code>ALIAS</code> or <code>ANAME</code> or <code>A</code> record and point it to the IP addresses of <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">Github Pages</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="err">185.199.108.153</span>
+<span class="err">185.199.109.153</span>
+<span class="err">185.199.110.153</span>
+<span class="err">185.199.111.153</span>
+</code></pre></div>
+
+<p>That's it! you can double check that everything was set up correctly by digging both you subdomain and domain addresses using <code>dig</code> in your terminal.
+Example:</p>
+<div class="highlight"><pre><span></span><code>$ dig EXAMPLE.COM +noall +answer
+&gt; EXAMPLE.COM     <span class="m">3600</span>    IN A     <span class="m">185</span>.199.108.153
+&gt; EXAMPLE.COM     <span class="m">3600</span>    IN A     <span class="m">185</span>.199.109.153
+&gt; EXAMPLE.COM     <span class="m">3600</span>    IN A     <span class="m">185</span>.199.110.153
+&gt; EXAMPLE.COM     <span class="m">3600</span>    IN A     <span class="m">185</span>.199.111.153
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$ dig WWW.EXAMPLE.COM +nostats +nocomments +nocmd
+    &gt; <span class="p">;</span>WWW.EXAMPLE.COM.                     IN      A
+    &gt; WWW.EXAMPLE.COM.              <span class="m">3592</span>    IN      CNAME   YOUR-USERNAME.github.io.
+    &gt; YOUR-USERNAME.github.io.      <span class="m">43192</span>   IN      CNAME    GITHUB-PAGES-SERVER .
+    &gt;  GITHUB-PAGES-SERVER .         <span class="m">22</span>      IN      A       <span class="m">192</span>.0.2.1
+</code></pre></div>
+
+<p>Hope it worked for you, for more information you can refer the official documentation from Github <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site">https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site</a></p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://Christian-Cardone.github.io/tag/github.html">github</a>
-      <a href="https://Christian-Cardone.github.io/tag/website.html">website</a>
+      <a href="https://Christian-Cardone.github.io/tag/github.html">Github</a>
+      <a href="https://Christian-Cardone.github.io/tag/website.html">Website</a>
     </p>
   </div>
 
