@@ -122,10 +122,10 @@
 
   <div>
     <p>In this post I will share a simple implementation of an app to send automatic predefined messages to a channel or contact in Slack on a specific time and dates using Python.</p>
-<p>The post is broken down into 3 sections:
-- Pre-requisites. Shows how to create an app in Slack (to use the Slack API) and to set up rights to communicate with it.
-- Sending messages with Python. A quick walk-through of how to send messages using the <code>slackclient</code> package.
-- A simple app to send Messages. An app/project to send automatic static messages on programmed dates and time.</p>
+<p>The post is broken down into 3 sections:<br>
+- Pre-requisites. Shows how to create an app in Slack (to use the Slack API) and to set up rights to communicate with it.<br>
+- Sending messages with Python. A quick walk-through of how to send messages using the <code>slackclient</code> package.<br>
+- A simple app to send Messages. An app/project to send automatic static messages on programmed dates and time.  </p>
 <h2>Pre-requisites</h2>
 <h3>Create Internal Slack App</h3>
 <p>We will build an App within slack that will make use of the Alack API to help us communicating with the workspace using python.</p>
@@ -136,9 +136,9 @@
 <img src="./images/create-app.png" alt="preview" width="600"/></p>
 <h4>Set up permissions</h4>
 <p>Once created we need to set up the proper permissions to allow the interaction between the app and the Slack API.</p>
-<p>First click on your newly created app (in our example DataScience), you should see now the Settings of your app. Here you need to do 2 things:
-- Add functionalities, type of actions the app can do (there are tons of options, see <a href="https://api.slack.com">official site</a>)
-- Install the app in the workspace, so you make use of it.</p>
+<p>First click on your newly created app (in our example DataScience), you should see now the Settings of your app. Here you need to do 2 things:<br>
+- Add functionalities, type of actions the app can do (there are tons of options, see <a href="https://api.slack.com">official site</a>)<br>
+- Install the app in the workspace, so you make use of it.  </p>
 <p>Our app will only send messages on behalf of a user or group, go to <code>OAuth Tokens &amp; Redirect URLs</code> and scroll down to Scopes
 <img src="./images/scopes.png" alt="preview" width="600"/></p>
 <p>There are two options, for users and bots, we will add both (user and robot) tokens since I want my app to be able to send messages as "datascience" but also as my "<slack user>". Click on <code>Add and OAuth Scope</code> and find the "chat:write" option and select it for both the Bot and User.
@@ -177,10 +177,10 @@
 <span class="n">response</span><span class="o">.</span><span class="n">data</span>
 </code></pre></div>
 
-<p>You will find useful information in <code>response.data</code> in the form of a dictionary containing among other things:
- - An indicator if the message was sent: 'ok'
- - Message data, including the message itself, user id, time stamp, and the bot profile.
- Example:</p>
+<p>You will find useful information in <code>response.data</code> in the form of a dictionary containing among other things:<br>
+ - An indicator if the message was sent: 'ok'<br>
+ - Message data, including the message itself, user id, time stamp, and the bot profile.<br>
+ Example:  </p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;ok&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
  <span class="s1">&#39;channel&#39;</span><span class="p">:</span> <span class="s1">&#39;C00001AAA1A&#39;</span><span class="p">,</span>
  <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="s1">&#39;1604496007.000500&#39;</span><span class="p">,</span>
@@ -246,12 +246,12 @@
 <div class="highlight"><pre><span></span><code><span class="err">pyton morning_app.py</span>
 </code></pre></div>
 
-<p>A window will pop up requesting:
-Channel: the name name of channel or user that will receive the messages (include "#" or "@" accordingly). Example <strong>#bot-test</strong>
-Message: the text you want to share. Example <strong>Hello world</strong>
-Time of the Day: The time you want the message to be sent in <code>hh:mm</code> format. Example <strong>10:00</strong> this will send the message at 10am (if you want 10 pm instead, write 22:00)
-Weekdays to send the Message: Select all the days you want the same message to be sent. Example <strong>We will send it every Tuesday</strong> </p>
-<p><img src="./images/slack-app-1.png" alt="preview" width="300"/></p>
+<p>A window will pop up requesting:<br>
+- Channel: the name name of channel or user that will receive the messages (include "#" or "@" accordingly). Example <strong>#bot-test</strong><br>
+- Message: the text you want to share. Example <strong>Hello world</strong><br>
+- Time of the Day: The time you want the message to be sent in <code>hh:mm</code> format. Example <strong>10:00</strong> this will send the message at 10am (if you want 10 pm instead, write 22:00)<br>
+- Weekdays to send the Message: Select all the days you want the same message to be sent. Example <strong>We will send it every Sunday</strong>  </p>
+<p><img src="./images/slack-app-1-1.png" alt="preview" width="300"/></p>
 <p>After selecting your options click <code>Submit</code>.</p>
 <p>A new window will pop up indicating that the program is running.</p>
 <p><img src="./images/slack-app-2.png" alt="preview" width="300"/></p>
