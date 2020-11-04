@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://Christian-Cardone.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://Christian-Cardone.github.io/theme/pygments/solarized-dark.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://Christian-Cardone.github.io/theme/pygments/solarized-dark.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/solid.css">
+
+
+
+
+    <link rel="shortcut icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Christian Cardone" />
+<meta name="description" content="In this post I will share a simple implementation of an app to send automatic predefined messages to a channel or contact in Slack on a specific time and dates using Python. The post is broken down into 3 sections: - Pre-requisites. Shows how to create an app in Slack (to …" />
+<meta name="keywords" content="Python, Slack, Automation">
+
+
+<meta property="og:site_name" content="Cardone"/>
+<meta property="og:title" content="App to send messages to a Slack channel (using Python)"/>
+<meta property="og:description" content="In this post I will share a simple implementation of an app to send automatic predefined messages to a channel or contact in Slack on a specific time and dates using Python. The post is broken down into 3 sections: - Pre-requisites. Shows how to create an app in Slack (to …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://Christian-Cardone.github.io/app-to-send-messages-to-a-slack-channel-using-python.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-11-01 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://Christian-Cardone.github.io/author/christian-cardone.html">
+<meta property="article:section" content="Other"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="Slack"/>
+<meta property="article:tag" content="Automation"/>
+<meta property="og:image" content="/images/Christian.jpg">
+
+  <title>Cardone &ndash; App to send messages to a Slack channel (using Python)</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://Christian-Cardone.github.io">
+        <img src="/images/Christian.jpg" alt="Christian Cardone" title="Christian Cardone">
+      </a>
+
+      <h1>
+        <a href="https://Christian-Cardone.github.io">Christian Cardone</a>
+      </h1>
+
+<p>Data Science Blog</p>
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/Christian-Cardone" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/christian-cardone-453884119" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://Christian-Cardone.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="app-to-send-messages-to-a-slack-channel-using-python">App to send messages to a Slack channel (using Python)</h1>
+    <p>
+      Posted on Sun 01 November 2020 in <a href="https://Christian-Cardone.github.io/category/other.html">Other</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>In this post I will share a simple implementation of an app to send automatic predefined messages to a channel or contact in Slack on a specific time and dates using Python.</p>
+<p>The post is broken down into 3 sections:
+- Pre-requisites. Shows how to create an app in Slack (to use the Slack API) and to set up rights to communicate with it.
+- Sending messages with Python. A quick walk-through of how to send messages using the <code>slackclient</code> package.
+- A simple app to send Messages. An app/project to send automatic static messages on programmed dates and time.</p>
+<h2>Pre-requisites</h2>
+<h3>Create Internal Slack App</h3>
+<p>We will build an App within slack that will make use of the Alack API to help us communicating with the workspace using python.</p>
+<h4>Create the App</h4>
+<p>Sign in, select the workspace you want to communicate with, click on <code>Build</code> and once there click on <code>Create New App</code>.
+<img src="./images/create-app.png" alt="preview" width="600"/></p>
+<p>A new window will pop-up requesting the a "Name" for the app and the workspace. Example, I will name mine "Data Science".
+<img src="./images/create-app.png" alt="preview" width="600"/></p>
+<h4>Set up permissions</h4>
+<p>Once created we need to set up the proper permissions to allow the interaction between the app and the Slack API.</p>
+<p>First click on your newly created app (in our example DataScience), you should see now the Settings of your app. Here you need to do 2 things:
+- Add functionalities, type of actions the app can do (there are tons of options, see <a href="https://api.slack.com">official site</a>)
+- Install the app in the workspace, so you make use of it.</p>
+<p>Our app will only send messages on behalf of a user or group, go to <code>OAuth Tokens &amp; Redirect URLs</code> and scroll down to Scopes
+<img src="./images/scopes.png" alt="preview" width="600"/></p>
+<p>There are two options, for users and bots, we will add both (user and robot) tokens since I want my app to be able to send messages as "datascience" but also as my "<slack user>". Click on <code>Add and OAuth Scope</code> and find the "chat:write" option and select it for both the Bot and User.
+<img src="./images/scopes-2.png" alt="preview" width="600"/></p>
+<p>Now you need to install the app. Still on <code>OAuth &amp; Permissions</code>, go to the <code>OAuth Tokens &amp; Redirect URLs</code> section and click on <code>Request to Install</code> the app. Add an optional message for the admins (of your slack) to approve your request.</p>
+<p>Once it's been approved you will see that The Basic Information has changed, reflecting your additions.
+<img src="./images/basic-info-slack-app.png" alt="preview" width="600"/></p>
+<p>Go back to the <code>OAuth &amp; Permissions</code> menu and you will see there the tokens for the bot and your user (tokens are automatically generated).
+<img src="./images/tokens-slack-app.png" alt="preview" width="600"/></p>
+<p>Now you have everything set up, you can go to python to start sending messages.</p>
+<h2>Sending messages to Slack using Python.</h2>
+<p>I'll make use of the <a href="https://pypi.org/project/slackclient/"><code>slackclient</code></a> package with Python 3.</p>
+<p>First install the package:</p>
+<div class="highlight"><pre><span></span><code><span class="err">pip install slackclient</span>
+</code></pre></div>
+
+<p>The package has tools that help you send messages straight out of the box. For a simple test import <code>WebClient</code>, initialise it with your token and then simple use the <code>chat_postMessage</code> method to send your message.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">slack</span> <span class="kn">import</span> <span class="n">WebClient</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;your-token&#39;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">WebClient</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">chat_postMessage</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;#bot-test&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello world!!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img src="./images/slack-app-5.png" alt="preview" width="600"/></p>
+<p>The query will send the message and return a response object <code>slack.web.slack_response.SlackResponse</code>. If the message was successfully sent it will return an "ok" if not, it will return an error.</p>
+<p>For a better tracking of the event, make sure to assign the response to a variable. Then you can access the content of the response stored in <code>data</code>. Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">slack</span> <span class="kn">import</span> <span class="n">WebClient</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="s1">&#39;your-token&#39;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">WebClient</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat_postMessage</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;#bot-test&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello world!!&quot;</span><span class="p">)</span>
+
+<span class="n">response</span><span class="o">.</span><span class="n">data</span>
+</code></pre></div>
+
+<p>You will find useful information in <code>response.data</code> in the form of a dictionary containing among other things:
+ - An indicator if the message was sent: 'ok'
+ - Message data, including the message itself, user id, time stamp, and the bot profile.
+ Example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;ok&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;channel&#39;</span><span class="p">:</span> <span class="s1">&#39;C00001AAA1A&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="s1">&#39;1604496007.000500&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bot_id&#39;</span><span class="p">:</span> <span class="s1">&#39;B0001AAAAA1&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;Hello world!!&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;UA1AAA01A&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;ts&#39;</span><span class="p">:</span> <span class="s1">&#39;1604496007.000500&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;team&#39;</span><span class="p">:</span> <span class="s1">&#39;T0001AAAA&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;bot_profile&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;B0001AAAAA1&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;deleted&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;DataScience&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;updated&#39;</span><span class="p">:</span> <span class="mi">1589887375</span><span class="p">,</span>
+   <span class="s1">&#39;app_id&#39;</span><span class="p">:</span> <span class="s1">&#39;A001AAA0AAA&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;icons&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;image_36&#39;</span><span class="p">:</span> <span class="s1">&#39;https://a.slack-edge.com/80588/img/plugins/app/bot_36.png&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;image_48&#39;</span><span class="p">:</span> <span class="s1">&#39;https://a.slack-edge.com/80588/img/plugins/app/bot_48.png&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;image_72&#39;</span><span class="p">:</span> <span class="s1">&#39;https://a.slack-edge.com/80588/img/plugins/app/service_72.png&#39;</span><span class="p">},</span>
+   <span class="s1">&#39;team_id&#39;</span><span class="p">:</span> <span class="s1">&#39;T0001AAAA&#39;</span><span class="p">}}}</span>
+</code></pre></div>
+
+<p>You can use that info to wrap the code above into a <code>tryCatch</code> statement as shown in the <a href="https://pypi.org/project/slackclient/">package documentation</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">slack</span> <span class="kn">import</span> <span class="n">WebClient</span>
+<span class="kn">from</span> <span class="nn">slack.errors</span> <span class="kn">import</span> <span class="n">SlackApiError</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">WebClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SLACK_API_TOKEN&#39;</span><span class="p">])</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat_postMessage</span><span class="p">(</span>
+        <span class="n">channel</span><span class="o">=</span><span class="s1">&#39;#random&#39;</span><span class="p">,</span>
+        <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">][</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Hello world!&quot;</span>
+<span class="k">except</span> <span class="n">SlackApiError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># You will get a SlackApiError if &quot;ok&quot; is False</span>
+    <span class="k">assert</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;ok&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span>
+    <span class="k">assert</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span>  <span class="c1"># str like &#39;invalid_auth&#39;, &#39;channel_not_found&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got an error: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h2>A simple app to send Messages</h2>
+<p>You can find <a href="https://github.com/Christian-Cardone/slack_app">here</a> one simple project I made to send static messages to a slack group/contact on a specif time for every day you select.</p>
+<p>Clone the repository, go to <code>tokens/key.json</code> and add your token from your slack app.</p>
+<div class="highlight"><pre><span></span><code>slack_app
+|-slack_app
+|-tokens
+    |-key.json
+|-License
+|-README.md
+|-morning_app.py
+</code></pre></div>
+
+<p>Change the text <code>&lt;your-key-token-here&gt;</code> with your own key</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;API_TOKEN&quot;: &quot;&lt;your-key-token-here&gt;&quot;
+}
+</code></pre></div>
+
+<p>Before running the app make sure you have installed the project package dependencies, see <code>README.md</code>. </p>
+<div class="highlight"><pre><span></span><code><span class="err">pip install slackclient</span>
+</code></pre></div>
+
+<p>Go to the main directory of the project and execute the <code>morning_app.py</code> file (Make sure you run it using python 3 as it won't run with python 2)</p>
+<div class="highlight"><pre><span></span><code><span class="err">pyton morning_app.py</span>
+</code></pre></div>
+
+<p>A window will pop up requesting:
+Channel: the name name of channel or user that will receive the messages (include "#" or "@" accordingly). Example <strong>#bot-test</strong>
+Message: the text you want to share. Example <strong>Hello world</strong>
+Time of the Day: The time you want the message to be sent in <code>hh:mm</code> format. Example <strong>10:00</strong> this will send the message at 10am (if you want 10 pm instead, write 22:00)
+Weekdays to send the Message: Select all the days you want the same message to be sent. Example <strong>We will send it every Tuesday</strong> </p>
+<p><img src="./images/slack-app-1.png" alt="preview" width="300"/></p>
+<p>After selecting your options click <code>Submit</code>.</p>
+<p>A new window will pop up indicating that the program is running.</p>
+<p><img src="./images/slack-app-2.png" alt="preview" width="300"/></p>
+<p>It will remain running until you stop it. For example if you marked "Tuesday" in your options, it will send the message every Tuesday until you stop the app.</p>
+<p>If you added your user key you should see something like:</p>
+<p><img src="./images/slack-app-3.png" alt="preview" width="600"/></p>
+<p>If you added the bot token:</p>
+<p><img src="./images/slack-app-4.png" alt="preview" width="600"/></p>
+<p>Feel free to play with the project as you wish, for example you can use it as template to create more advanced/interesting automation projects.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://Christian-Cardone.github.io/tag/python.html">Python</a>
+      <a href="https://Christian-Cardone.github.io/tag/slack.html">Slack</a>
+      <a href="https://Christian-Cardone.github.io/tag/automation.html">Automation</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://Christian-Cardone.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Cardone ",
+  "url" : "https://Christian-Cardone.github.io",
+  "image": "/images/Christian.jpg",
+  "description": "Cardone - Data Science Notes"
+}
+</script>
+
+
+</body>
+</html>
