@@ -56,13 +56,13 @@
     <meta name="msapplication-TileColor" content="#333">
 
 <meta name="author" content="Christian Cardone" />
-<meta name="description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all this is a static blog, which means that there is no live database behind it. Due to this reason you can easily Getting Started Install …" />
+<meta name="description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all, this blog is &#34;static&#34;, which means that there is no live database behind it -making it very easy to maintain! I&#39;m using pelican, a python …" />
 <meta name="keywords" content="Python, Website">
 
 
 <meta property="og:site_name" content="Cardone"/>
 <meta property="og:title" content="How I did this blog with Python (and Pelican)"/>
-<meta property="og:description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all this is a static blog, which means that there is no live database behind it. Due to this reason you can easily Getting Started Install …"/>
+<meta property="og:description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all, this blog is &#34;static&#34;, which means that there is no live database behind it -making it very easy to maintain! I&#39;m using pelican, a python …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://Christian-Cardone.github.io/how-i-did-this-blog-with-python-and-pelican.html"/>
 <meta property="og:type" content="article"/>
@@ -131,13 +131,14 @@
 
   <div>
     <p>I'm going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. </p>
-<p>First of all this is a static blog, which means that there is no live database behind it. Due to this reason you can easily </p>
+<p>First of all, this blog is "static", which means that there is no live database behind it -making it very easy to maintain! </p>
+<p>I'm using <a href="https://github.com/getpelican/pelican"><code>pelican</code></a>, a python library that generates static output in the form of ready to read <code>html</code> files that you can explore with your preferred web browser. This library makes things very simple for the average python user, integrating handy plugins and themes that allow users te personalize their websites (I will discuss few of them in the following sections). </p>
 <h2>Getting Started</h2>
-<p>Install pelican</p>
+<p>Install <code>pelican</code></p>
 <blockquote>
 <p>pip install pelican</p>
 </blockquote>
-<p>Install markdown support, if you want to write your posts using markdown, otherwise not needed (but you need to write them using a reStructeredText '.rst' format)</p>
+<p>Install markdown support, if you want to write your posts using markdown, otherwise is not needed (but you need to write them using a reStructeredText '.rst' format)</p>
 <blockquote>
 <p>pip install markdown</p>
 </blockquote>
@@ -179,7 +180,7 @@ Done. Your new project is available at /Users/christian.cardone/Projects/Researc
 
 <p>The content and output folders would be empty.</p>
 <h2>Adding Content</h2>
-<p>Now you can start writing content under the "content" directory. I added my first post as an md file (but feel free to use rst) and named it "test.md"</p>
+<p>Now you can start writing content under the "content" directory. I added my first post as an <code>md</code> file (but feel free to use rst) and named it "test.md"</p>
 <div class="highlight"><pre><span></span><code>Title: Welcome
 Date: 2010-12-03 10:20
 Category: DataScience
@@ -200,7 +201,7 @@ Done: Processed 1 article, 0 drafts, 0 pages, 0 hidden pages and 0 draft pages i
     |-test.md
 |-Makefile
 |-output
-    |-achives.html
+    |-archives.html
     |-author
     |-authors.html
     |-categories.html
@@ -214,24 +215,98 @@ Done: Processed 1 article, 0 drafts, 0 pages, 0 hidden pages and 0 draft pages i
 |-tasks.py
 </code></pre></div>
 
-<p>Note that the content welcome.html has been created including what I wrote in my md file. </p>
+<p>Note that the content welcome.html has been created including what I wrote in my <code>test.md</code> file. </p>
 <h2>Preview Site</h2>
 <p>To preview the content of the site, go back to the console and run:</p>
-<p>1 Using pelican
+<ol>
+<li>
+<p>Using pelican
 Go to the output path and execute</p>
 <blockquote>
-<p>cd ~ /Users/christian.cardone/Projects/Research/blog/output
+<p>cd ~ /Users/christian.cardone/Projects/Research/blog/output<br>
 python -m pelican.server</p>
 </blockquote>
-<p>2 Using development server
+</li>
+<li>
+<p>Using development server
 Go to the project directory and run:</p>
 <blockquote>
-<p>cd ~ /Users/christian.cardone/Projects/Research/blog
+<p>cd ~ /Users/christian.cardone/Projects/Research/blog<br>
 make devserver</p>
 </blockquote>
+</li>
+</ol>
 <p>Once is done, the preview of the site will be hosted in  <a href="http://localhost:8000/">http://localhost:8000/</a> in your browser. And should look similar to this:</p>
 <p><img src="./images/site-temp.png" alt="preview" width="600"/></p>
 <p>For more info regarding pelican take a look at their documentation <a href="https://docs.getpelican.com/en/stable/">https://docs.getpelican.com/en/stable/</a></p>
+<h2>Adding content from a Jupyter Notebook</h2>
+<p>To generate content from an <code>ipynb</code> file, its needed to install and configure a plugin. As of the time this article was written the <code>pelican-plugins</code> repository is under a re-structure and consolidation process, so there are certain plugins that are easy to install than others at this point. We will use the plugin <code>pelican-jupyter</code> formerly known as <code>pelican-ipynb</code>. Depending on the status of the migration of this plugin there could be different ways to install it, I will cover the most likely ones but also will cover a hard manual installation if needed.</p>
+<p>1.Install just the <code>pelican-jupyter</code> plugin:</p>
+<div class="highlight"><pre><span></span><code><span class="err">pip install pelican-jupyter</span>
+</code></pre></div>
+
+<p>2.Check if the plugin was installed following the new plugins structure or not. In the console run:</p>
+<div class="highlight"><pre><span></span><code><span class="err">pelican-plugins </span>
+</code></pre></div>
+
+<p>2.1 If migrated. You will see as output in the console:</p>
+<div class="highlight"><pre><span></span><code>-&gt; Plugins found:
+  | pelican.plugins.pelican_jupyter
+</code></pre></div>
+
+<p>If you could see the above, then simply add to your <code>pelicanconf.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pelican.plugins.pelican_jupyter.markup&#39;</span><span class="p">]</span> <span class="c1"># The plugin</span>
+<span class="n">MARKUP</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="s1">&#39;ipynb&#39;</span><span class="p">)</span>              <span class="c1">#Letting pelican know what extensions to take</span>
+<span class="n">IGNORE_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.ipynb_checkpoints&quot;</span><span class="p">]</span> <span class="c1">#Ignoring checkpoints from your jupyter notebooks</span>
+</code></pre></div>
+
+<p>2.2 If not migrated, then you would see something like the below after running 2.</p>
+<div class="highlight"><pre><span></span><code>-&gt; No plugins are installed
+</code></pre></div>
+
+<p>It means that the plugin wasn't installed as a submodule of pelican and instead was installed as an independent library, then a simple solution is to add the following to your <code>pelicanconf.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pelican_jupyter</span> <span class="kn">import</span> <span class="n">markup</span> <span class="k">as</span> <span class="n">nb_markup</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="n">nb_markup</span><span class="p">]</span>                 <span class="c1"># The plugin module</span>
+<span class="n">MARKUP</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;md&#39;</span><span class="p">,</span> <span class="s1">&#39;ipynb&#39;</span><span class="p">)</span>              <span class="c1"># Letting pelican know what extensions to take</span>
+<span class="n">IGNORE_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.ipynb_checkpoints&quot;</span><span class="p">]</span> <span class="c1"># Ignoring checkpoints from your jupyter notebooks</span>
+</code></pre></div>
+
+<p>3.The hard way. If none of the above work, clone the legacy repo of plugins:</p>
+<div class="highlight"><pre><span></span><code><span class="err">git clone --recursive https://github.com/getpelican/pelican-plugins</span>
+</code></pre></div>
+
+<p>Then specify in your <code>pelicanconf.py</code> the path of the plugin <code>pelican-ipynb</code> and the name of the submodule to be used <code>markup</code>. Note that we specify the full path to the plugin since what we need to use its a submodule of the plugin. If you are using multiple plugins I suggest to use one of the above solutions instead.</p>
+<div class="highlight"><pre><span></span><code><span class="n">PLUGIN_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;path/to/pelican-plugins/pelican-ipynb&#39;</span><span class="p">]</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;markup&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+<h3>Article metadata</h3>
+<p>There are two ways to pass the metadata; by a separate permeable file or by including it in the Jupyter notebook.</p>
+<p>1.Separate file (<code>.nbdata</code>)
+Create a file with the exact name as your Jupyter notebook (in the same folder) an add the extension <code>.nbdata</code>, inside pass the metadata as:</p>
+<div class="highlight"><pre><span></span><code>Title:
+Date:
+Category:
+Tags:
+Author:
+</code></pre></div>
+
+<p>It's important to leave an empty line in the bottom of the file.</p>
+<p>2.Within Jupyter
+You can add the metadata in the 1st cell of the notebook. In a markdown cell write:</p>
+<div class="highlight"><pre><span></span><code><span class="err">- title: My notebook</span>
+<span class="err">- author: Christian Cardone</span>
+<span class="err">- date: 2020-12-28</span>
+<span class="err">- category: pyhton</span>
+<span class="err">- tags: website</span>
+</code></pre></div>
+
+<p>Note that the metadata parameters are specified with a hyphen ("-"), in lower letters ("ab"), and there is an space after each colon (": ").</p>
+<p>If you chose the option 2, then you will need to add an additional parameter to your <code>pelicanconf.py</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="n">IPYNB_MARKUP_USE_FIRST_CELL</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+
+<p>Note: The <code>nb</code> extension and the name of the parameter <code>IPYNB_MARKUP_USE_FIRST_CELL</code> replaced other previous convention. In case you have an old version or they decide to change it again, you can see what is the valid convention in the <a href="https://github.com/danielfrg/pelican-jupyter/tree/0b3bcd2f2a664c008898e0dcc955df579bae3c80">repo website</a> or in the <code>markup.py</code> file.</p>
 <h2>Customisation</h2>
 <p>You can easily change the theme of your site by downloading it from <a href="https://github.com/getpelican/pelican-themes">pelican-themes</a> repo, you can see a preview of all them in <a href="http://www.pelicanthemes.com/">http://www.pelicanthemes.com/</a>. I personally like the Flex theme (repo <a href="https://github.com/alexandrevicenzi/Flex">here</a>), without trying to promote it, I like it because of its useful integrations and features (including dark mode!).</p>
 <p>Once you have selected a theme, you can set it up by changing the <code>pelicanconfig.py</code> file. Simply add a line including the path where you stored the theme.</p>
@@ -248,7 +323,7 @@ If the theme allows custom CSS stylesheets you can add to the <code>pelicanconf.
 <span class="n">CUSTOM_CSS</span> <span class="o">=</span> <span class="s1">&#39;static/custom.css&#39;</span>
 </code></pre></div>
 
-<p>Otherwise simply identify the stylesheets in your local theme repo and change the css files accordingly. For example for Flex the stylesheets can be found on:</p>
+<p>Otherwise simply identify the stylesheets in your local theme repo and change the <code>css</code> files accordingly. For example for Flex the stylesheets can be found on:</p>
 <div class="highlight"><pre><span></span><code>/Users/christian.cardone/pelican-themes/Flex/
 
 |-static
@@ -261,9 +336,9 @@ If the theme allows custom CSS stylesheets you can add to the <code>pelicanconf.
 <p><a name="adding-google-analytics"></a></p>
 <h2>Adding Google Analytics</h2>
 <p>I will assume you have already a Google analytics account, if not please refer to the google analytics <a href="https://support.google.com/analytics/answer/10089681">How to get started</a> documentation.</p>
-<p>As of the time this article was written there were two different types of google analytics; google analytics and google analytics 4 (next generation). Hence different pelican themes have different integrations of them, if you are not sure what type of account do you have, or what type of analytics integration was included in your pelican-theme just simple check if the configuration requires a "UA-XXXX" ID or a "G-XXXX" ID, for google analytics (old) and next generation analytics (GA 4) respectively.</p>
+<p>As of the time this article was written there were two different types of google analytics; google analytics and google analytics 4 (next generation). Hence different pelican themes have different integrations of them, if you are not sure what type of account do you have, or what type of analytics integration was included in your "pelican-theme" just simple check if the configuration requires a "UA-XXXX" ID or a "G-XXXX" ID, the former for google analytics (old) and the latest for the next generation analytics (GA 4).</p>
 <p>Flex users have both integrations, for the 'old' GA simply add the following in your <code>pelicanconf.py</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">GOOGLE_ANALYTICS</span> <span class="o">=</span> <span class="s1">&#39;UA-XXXX&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">GOOGLE_ANALYTICS</span> <span class="o">=</span> <span class="s1">&#39;UA-XXXX&#39;</span>  
 <span class="n">GOOGLE_TAG_MANAGER</span> <span class="o">=</span> <span class="s1">&#39;GTM-XXXX&#39;</span>
 </code></pre></div>
 
