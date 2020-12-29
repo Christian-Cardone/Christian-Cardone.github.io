@@ -60,7 +60,7 @@
 <meta name="keywords" content="Python, Website">
 
 
-<meta property="og:site_name" content="Cardone"/>
+<meta property="og:site_name" content="Christian Cardone"/>
 <meta property="og:title" content="How I did this blog with Python (and Pelican)"/>
 <meta property="og:description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all, this blog is &#34;static&#34;, which means that there is no live database behind it -making it very easy to maintain! I&#39;m using pelican, a python …"/>
 <meta property="og:locale" content="en_US"/>
@@ -74,18 +74,18 @@
 <meta property="article:tag" content="Website"/>
 <meta property="og:image" content="/images/Christian.jpg">
 
-  <title>Cardone &ndash; How I did this blog with Python (and Pelican)</title>
+  <title>Christian Cardone &ndash; How I did this blog with Python (and Pelican)</title>
 
 </head>
 <body >
   <aside>
     <div>
       <a href="https://Christian-Cardone.github.io">
-        <img src="/images/Christian.jpg" alt="Christian Cardone" title="Christian Cardone">
+        <img src="/images/Christian.jpg" alt="Data Scientist" title="Data Scientist">
       </a>
 
       <h1>
-        <a href="https://Christian-Cardone.github.io">Christian Cardone</a>
+        <a href="https://Christian-Cardone.github.io">Data Scientist</a>
       </h1>
 
 <p>Data Science Blog</p>
@@ -306,7 +306,12 @@ You can add the metadata in the 1st cell of the notebook. In a markdown cell wri
 <div class="highlight"><pre><span></span><code><span class="n">IPYNB_MARKUP_USE_FIRST_CELL</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div>
 
-<p>Note: The <code>nb</code> extension and the name of the parameter <code>IPYNB_MARKUP_USE_FIRST_CELL</code> replaced other previous convention. In case you have an old version or they decide to change it again, you can see what is the valid convention in the <a href="https://github.com/danielfrg/pelican-jupyter/tree/0b3bcd2f2a664c008898e0dcc955df579bae3c80">repo website</a> or in the <code>markup.py</code> file.</p>
+<p>Note: 
+1. The <code>nb</code> extension and the name of the parameter <code>IPYNB_MARKUP_USE_FIRST_CELL</code> replaced a previous convention. In case you have an old version or the contribuitors decide to change it again, you can see what is the valid convention in the <a href="https://github.com/danielfrg/pelican-jupyter/tree/0b3bcd2f2a664c008898e0dcc955df579bae3c80">repo website</a> or in the <code>markup.py</code> file.
+2. There are some issues with some pelican-themes CSS and jupyter notebooks, which make the outputs look bad. I suggest to check the recommendations on how to solve this issues directly from <a href="https://github.com/danielfrg/pelican-jupyter">the repo</a>, but usually including the following in <code>pelicanconf.py</code> solves it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">IPYNB_SKIP_CSS</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+
 <h2>Customisation</h2>
 <p>You can easily change the theme of your site by downloading it from <a href="https://github.com/getpelican/pelican-themes">pelican-themes</a> repo, you can see a preview of all them in <a href="http://www.pelicanthemes.com/">http://www.pelicanthemes.com/</a>. I personally like the Flex theme (repo <a href="https://github.com/alexandrevicenzi/Flex">here</a>), without trying to promote it, I like it because of its useful integrations and features (including dark mode!).</p>
 <p>Once you have selected a theme, you can set it up by changing the <code>pelicanconfig.py</code> file. Simply add a line including the path where you stored the theme.</p>
@@ -410,10 +415,10 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " Cardone ",
+  "name": " Christian Cardone ",
   "url" : "https://Christian-Cardone.github.io",
   "image": "/images/Christian.jpg",
-  "description": "Cardone - Data Science Notes"
+  "description": "Data Scientist. I'm currently working as a Chief Data Scientist at Perfect Channel where I develop stochastic mechanisms for auction marketplaces"
 }
 </script>
 
