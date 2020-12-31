@@ -56,13 +56,13 @@
     <meta name="msapplication-TileColor" content="#333">
 
 <meta name="author" content="Christian Cardone" />
-<meta name="description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all, this blog is &#34;static&#34;, which means that there is no live database behind it -making it very easy to maintain! I&#39;m using pelican, a python …" />
+<meta name="description" content="I&#39;m going to show you how to create a blog similar to this one using Python with low to zero knowledge of front end scripting languages. First of all, this blog is &#34;static&#34;, which means that there is no live database behind it -making it very easy to maintain! I&#39;m …" />
 <meta name="keywords" content="Python, Website">
 
 
 <meta property="og:site_name" content="Christian Cardone"/>
 <meta property="og:title" content="How I did this blog with Python (and Pelican)"/>
-<meta property="og:description" content="I&#39;m going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. First of all, this blog is &#34;static&#34;, which means that there is no live database behind it -making it very easy to maintain! I&#39;m using pelican, a python …"/>
+<meta property="og:description" content="I&#39;m going to show you how to create a blog similar to this one using Python with low to zero knowledge of front end scripting languages. First of all, this blog is &#34;static&#34;, which means that there is no live database behind it -making it very easy to maintain! I&#39;m …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://Christian-Cardone.github.io/how-i-did-this-blog-with-python-and-pelican.html"/>
 <meta property="og:type" content="article"/>
@@ -130,7 +130,7 @@
 
 
   <div>
-    <p>I'm going to show you how I created this blog using Python with zero to null knowledge of front end scripting languages. </p>
+    <p>I'm going to show you how to create a blog similar to this one using Python with low to zero knowledge of front end scripting languages. </p>
 <p>First of all, this blog is "static", which means that there is no live database behind it -making it very easy to maintain! </p>
 <p>I'm using <a href="https://github.com/getpelican/pelican"><code>pelican</code></a>, a python library that generates static output in the form of ready to read <code>html</code> files that you can explore with your preferred web browser. This library makes things very simple for the average python user, integrating handy plugins and themes that allow users te personalize their websites (I will discuss few of them in the following sections). </p>
 <h2>Getting Started</h2>
@@ -391,6 +391,20 @@ If the theme allows custom CSS stylesheets you can add to the <code>pelicanconf.
 
 
 
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https://christian-cardone.disqus.com';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>
