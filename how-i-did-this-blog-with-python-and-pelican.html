@@ -133,8 +133,30 @@
     <p>I'm going to show you how to create a blog similar to this one using Python with low to zero knowledge of front end scripting languages. </p>
 <p>First of all, this blog is "static", which means that there is no live database behind it -making it very easy to maintain! </p>
 <p>I'm using <a href="https://github.com/getpelican/pelican"><code>pelican</code></a>, a python library that generates static output in the form of ready to read <code>html</code> files that you can explore with your preferred web browser. This library makes things very simple for the average python user, integrating handy plugins and themes that allow users te personalize their websites (I will discuss few of them in the following sections). </p>
-<h2>Getting Started</h2>
-<p>Install <code>pelican</code></p>
+<p>This is a long post, so feel free to jump directly to a particular section.</p>
+<h1>Contents</h1>
+<ul>
+<li><a href="#get-started">Get Started. Installation</a>  </li>
+<li><a href="#set-up">Set Up. Pelican Configuration</a>  </li>
+<li><a href="#add-content">Add Content</a>  </li>
+<li><a href="#add-content-from-a-jupyter-notebook">Add Content from a Jupyter Notebook</a>  <ul>
+<li><a href="#article-metadata">Article Metadata</a></li>
+</ul>
+</li>
+<li><a href="#generate-site">Generate Site </a></li>
+<li><a href="#preview-site">Preview Site</a>  </li>
+<li><a href="#customisation">Customisation</a><ul>
+<li><a href="#change-colours-css">Change Colours (CSS)</a> </li>
+</ul>
+</li>
+<li><a href="#add-google-analytics">Add Google Analytics</a><ul>
+<li><a href="#if-your-pelican-theme-does-not-have-a-ga-integration">If your Pelican Theme does not have GA Integration</a></li>
+</ul>
+</li>
+<li><a href="#enable-comments-via-disqus">Enable Comments (Disqus)</a></li>
+</ul>
+<h2>Get Started</h2>
+<p>First you need to install <code>pelican</code></p>
 <blockquote>
 <p>pip install pelican</p>
 </blockquote>
@@ -179,7 +201,7 @@ Done. Your new project is available at /Users/christian.cardone/Projects/Researc
 </code></pre></div>
 
 <p>The content and output folders would be empty.</p>
-<h2>Adding Content</h2>
+<h2>Add Content</h2>
 <p>Now you can start writing content under the "content" directory. I added my first post as an <code>md</code> file (but feel free to use rst) and named it "test.md"</p>
 <div class="highlight"><pre><span></span><code>Title: Welcome
 Date: 2010-12-03 10:20
@@ -189,57 +211,7 @@ Category: DataScience
 Another Data Science Blog...
 </code></pre></div>
 
-<h2>Generate site</h2>
-<p>To generate the content make sure you are placed on the main directory and run:</p>
-<blockquote>
-<p>pelican content
-Done: Processed 1 article, 0 drafts, 0 pages, 0 hidden pages and 0 draft pages in 0.13 seconds.</p>
-</blockquote>
-<p>Now you will have content generated in the output folder, the new structure should look like this:</p>
-<div class="highlight"><pre><span></span><code>.
-|-content
-    |-test.md
-|-Makefile
-|-output
-    |-archives.html
-    |-author
-    |-authors.html
-    |-categories.html
-    |-category
-    |-index.html
-    |-tags.html
-    |-theme
-    |-welcome.html
-|-pelicanconf.py
-|-publishconf.py
-|-tasks.py
-</code></pre></div>
-
-<p>Note that the content welcome.html has been created including what I wrote in my <code>test.md</code> file. </p>
-<h2>Preview Site</h2>
-<p>To preview the content of the site, go back to the console and run:</p>
-<ol>
-<li>
-<p>Using pelican
-Go to the output path and execute</p>
-<blockquote>
-<p>cd ~ /Users/christian.cardone/Projects/Research/blog/output<br>
-python -m pelican.server</p>
-</blockquote>
-</li>
-<li>
-<p>Using development server
-Go to the project directory and run:</p>
-<blockquote>
-<p>cd ~ /Users/christian.cardone/Projects/Research/blog<br>
-make devserver</p>
-</blockquote>
-</li>
-</ol>
-<p>Once is done, the preview of the site will be hosted in  <a href="http://localhost:8000/">http://localhost:8000/</a> in your browser. And should look similar to this:</p>
-<p><img src="./images/site-temp.png" alt="preview" width="600"/></p>
-<p>For more info regarding pelican take a look at their documentation <a href="https://docs.getpelican.com/en/stable/">https://docs.getpelican.com/en/stable/</a></p>
-<h2>Adding content from a Jupyter Notebook</h2>
+<h2>Add content from a Jupyter Notebook</h2>
 <p>To generate content from an <code>ipynb</code> file, its needed to install and configure a plugin. As of the time this article was written the <code>pelican-plugins</code> repository is under a re-structure and consolidation process, so there are certain plugins that are easy to install than others at this point. We will use the plugin <code>pelican-jupyter</code> formerly known as <code>pelican-ipynb</code>. Depending on the status of the migration of this plugin there could be different ways to install it, I will cover the most likely ones but also will cover a hard manual installation if needed.</p>
 <p>1.Install just the <code>pelican-jupyter</code> plugin:</p>
 <div class="highlight"><pre><span></span><code><span class="err">pip install pelican-jupyter</span>
@@ -312,6 +284,56 @@ You can add the metadata in the 1st cell of the notebook. In a markdown cell wri
 <div class="highlight"><pre><span></span><code><span class="n">IPYNB_SKIP_CSS</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div>
 
+<h2>Generate site</h2>
+<p>To generate the content make sure you are placed on the main directory and run:</p>
+<blockquote>
+<p>pelican content
+Done: Processed 1 article, 0 drafts, 0 pages, 0 hidden pages and 0 draft pages in 0.13 seconds.</p>
+</blockquote>
+<p>Now you will have content generated in the output folder, the new structure should look like this:</p>
+<div class="highlight"><pre><span></span><code>.
+|-content
+    |-test.md
+|-Makefile
+|-output
+    |-archives.html
+    |-author
+    |-authors.html
+    |-categories.html
+    |-category
+    |-index.html
+    |-tags.html
+    |-theme
+    |-welcome.html
+|-pelicanconf.py
+|-publishconf.py
+|-tasks.py
+</code></pre></div>
+
+<p>Note that the content welcome.html has been created including what I wrote in my <code>test.md</code> file. </p>
+<h2>Preview Site</h2>
+<p>To preview the content of the site, go back to the console and run:</p>
+<ol>
+<li>
+<p>Using pelican
+Go to the output path and execute</p>
+<blockquote>
+<p>cd ~ /Users/christian.cardone/Projects/Research/blog/output<br>
+python -m pelican.server</p>
+</blockquote>
+</li>
+<li>
+<p>Using development server
+Go to the project directory and run:</p>
+<blockquote>
+<p>cd ~ /Users/christian.cardone/Projects/Research/blog<br>
+make devserver</p>
+</blockquote>
+</li>
+</ol>
+<p>Once is done, the preview of the site will be hosted in  <a href="http://localhost:8000/">http://localhost:8000/</a> in your browser. And should look similar to this:</p>
+<p><img src="./images/site-temp.png" alt="preview" width="600"/></p>
+<p>For more info regarding pelican take a look at their documentation <a href="https://docs.getpelican.com/en/stable/">https://docs.getpelican.com/en/stable/</a></p>
 <h2>Customisation</h2>
 <p>You can easily change the theme of your site by downloading it from <a href="https://github.com/getpelican/pelican-themes">pelican-themes</a> repo, you can see a preview of all them in <a href="http://www.pelicanthemes.com/">http://www.pelicanthemes.com/</a>. I personally like the Flex theme (repo <a href="https://github.com/alexandrevicenzi/Flex">here</a>), without trying to promote it, I like it because of its useful integrations and features (including dark mode!).</p>
 <p>Once you have selected a theme, you can set it up by changing the <code>pelicanconfig.py</code> file. Simply add a line including the path where you stored the theme.</p>
@@ -319,7 +341,7 @@ You can add the metadata in the 1st cell of the notebook. In a markdown cell wri
 <span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;/Users/christian.cardone/pelican-themes/Flex/&#39;</span>
 </code></pre></div>
 
-<h3>Changing colours (css)</h3>
+<h3>Change colours (css)</h3>
 <p>Depending on the theme you have selected you can either create a custom.css or modify directly the stylesheets.
 If the theme allows custom CSS stylesheets you can add to the <code>pelicanconf.py</code> something like this:</p>
 <div class="highlight"><pre><span></span><code><span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
@@ -339,7 +361,7 @@ If the theme allows custom CSS stylesheets you can add to the <code>pelicanconf.
 
 <p>These files are for the dark and light themes respectively. You can also change there the font type and size if you desire.</p>
 <p><a name="adding-google-analytics"></a></p>
-<h2>Adding Google Analytics</h2>
+<h2>Add Google Analytics</h2>
 <p>I will assume you have already a Google analytics account, if not please refer to the google analytics <a href="https://support.google.com/analytics/answer/10089681">How to get started</a> documentation.</p>
 <p>As of the time this article was written there were two different types of google analytics; google analytics and google analytics 4 (next generation). Hence different pelican themes have different integrations of them, if you are not sure what type of account do you have, or what type of analytics integration was included in your "pelican-theme" just simple check if the configuration requires a "UA-XXXX" ID or a "G-XXXX" ID, the former for google analytics (old) and the latest for the next generation analytics (GA 4).</p>
 <p>Flex users have both integrations, for the 'old' GA simply add the following in your <code>pelicanconf.py</code>:</p>
@@ -379,6 +401,17 @@ If the theme allows custom CSS stylesheets you can add to the <code>pelicanconf.
 
 <p>The above will allow you to add the snippet to all your outputs automatically. Once you have modified the <code>base.html</code>, you can generate your content and validate that your <code>html</code> outputs include the snippet. </p>
 <p>Now you can push your changes and check in your google analytics account that you are receiving data. Note that it takes time for GA to build up a report so it's recommended to check the real time data to see if your installation is working properly.</p>
+<h2>Enable Comments via Disqus</h2>
+<p>With Pelican 3.2.2 (or above) you can easily integrate comments into your website using <a href="https://disqus.com/">Disqus</a>. </p>
+<p>All you have to do is to create an account in Disqus, select your plan (Basic as of today is free) follow the steps and eventually Disqus then will ask you to install it, select the option "Universal Code" and it would take you to a URL similar to this <code>&lt;your-site.disqus.com/admin&gt;</code>. You don't have to copy any code <em>Pelican</em> has already done it for you. In the admin site feel free to configure the options you prefer (whether you would allow guest to comment or not, include pictures/reactions/videos, include Adds, ...). Once you are done with the configuration within Disqus, got to <code>https://&lt;your-site&gt;.disqus.com/admin/settings/general/</code> and copy your <strong>Shortname</strong>.</p>
+<p>Your <em>Shortname</em> is your unique Disqus unique ID and cannot be changed.  </p>
+<p><img src="./images/disqus-sitename.png" alt="preview" width="300"/> </p>
+<p>Now add this parameter into your <code>pelicanconf.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s2">&quot;&lt;your-sitename&gt;&quot;</span>
+</code></pre></div>
+
+<p>That's it, if everything went well, you will be able to see your comments.</p>
+<p>If you want to see how can you host your website on <strong>Github</strong>, check out my other post <a href="https://Christian-Cardone.github.io/hosting-a-static-website-on-github.html">Hosting a Static Website (on Github)</a>.</p>
   </div>
   <div class="tag-cloud">
     <p>
