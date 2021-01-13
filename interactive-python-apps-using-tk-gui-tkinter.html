@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://Christian-Cardone.github.io/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://Christian-Cardone.github.io/theme/pygments/solarized-dark.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://Christian-Cardone.github.io/theme/pygments/solarized-dark.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://Christian-Cardone.github.io/theme/font-awesome/css/solid.css">
+
+
+
+
+    <link rel="shortcut icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GSF5BZ7ZFG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GSF5BZ7ZFG');
+</script>
+<!-- End of Global site tag (gtag.js) - Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Christian Cardone" />
+<meta name="description" content="What is tcl-tk? Tcl (Tool Command Language) is a simple open-source interpreted programming language that provides multiple common facilities such as variables, procedures, and control structures as well as many useful features that are not found in any other major language. Tcl runs on almost all modern operating systems such …" />
+<meta name="keywords" content="Python, tkinter">
+
+
+<meta property="og:site_name" content="Christian Cardone"/>
+<meta property="og:title" content="Interactive Python Apps using tk GUI (tkinter)"/>
+<meta property="og:description" content="What is tcl-tk? Tcl (Tool Command Language) is a simple open-source interpreted programming language that provides multiple common facilities such as variables, procedures, and control structures as well as many useful features that are not found in any other major language. Tcl runs on almost all modern operating systems such …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://Christian-Cardone.github.io/interactive-python-apps-using-tk-gui-tkinter.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-02-27 00:00:00+00:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://Christian-Cardone.github.io/author/christian-cardone.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="tkinter"/>
+<meta property="og:image" content="/images/Christian.jpg">
+
+  <title>Christian Cardone &ndash; Interactive Python Apps using tk GUI (tkinter)</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://Christian-Cardone.github.io">
+        <img src="/images/Christian.jpg" alt="Christian Cardone" title="Christian Cardone">
+      </a>
+
+      <h1>
+        <a href="https://Christian-Cardone.github.io">Christian Cardone</a>
+      </h1>
+
+<p>Data Science Blog</p>
+
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/Christian-Cardone" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/christian-cardone-453884119" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://Christian-Cardone.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="interactive-python-apps-using-tk-gui-tkinter">Interactive Python Apps using tk GUI (tkinter)</h1>
+    <p>
+      Posted on Thu 27 February 2020 in <a href="https://Christian-Cardone.github.io/category/python.html">Python</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h2>What is tcl-tk?</h2>
+<p>Tcl (Tool Command Language) is a simple open-source interpreted programming language that provides multiple common facilities such as variables, procedures, and control structures as well as many useful features that are not found in any other major language. Tcl runs on almost all modern operating systems such as Unix, Macintosh, and Windows (including Windows Mobile).</p>
+<p>Tk (Tool Kit) is a free open-source, cross platform widget toolkit that together with tcl, allows users to program interfaces. Tk comes installed for pretty much all macOS and Linux machines (as of this post current version is 8.6). While tk provides all the snippets like buttons, boxes and windows, tcl defines what to do with them.</p>
+<p>If you are using Windows please jump to <a href="#test-tkinter-for-windows-users">Test tkinter for Windows Users</a>. </p>
+<h2>Enable tkinter Python package for iOS</h2>
+<p>We will assume that you are using Python 3. One clean way to install components to macOS is via <em>homebrew</em>, if you are using it as your package manager first you need to install tcl-tk:</p>
+<h3>Via homebrew</h3>
+<p>Depending on the version you are in, this can be a tricky installation. The process will be shown in steps that hopefully would cover most of the known issues/scenarios.</p>
+<h4>1. Install tcl-tk cask</h4>
+<div class="highlight"><pre><span></span><code><span class="err">brew update  </span>
+<span class="err">brew install tcl-tk</span>
+</code></pre></div>
+
+<p>Now you would be able to see in cellar <code>/usr/local/Cellar/</code>, in our case we installed <code>tcl-tk 8.6.10</code>.</p>
+<h4>2. Install pyenv (if you have consider 2.b)</h4>
+<p>The <code>pyenv 1.2.18</code> was used for this post.</p>
+<div class="highlight"><pre><span></span><code><span class="err">brew install pyenv</span>
+</code></pre></div>
+
+<p>Then you will need to do modify your bash and zsh profiles to facilitate the use of pyenv and the global python and pip in use.</p>
+<p>a. Create or modify <code>~/.bash_profile</code> and include:</p>
+<blockquote>
+<p>export PYENV_ROOT="$HOME/.pyenv"<br>
+export PATH="$PYENV_ROOT/bin:$PATH"<br>
+if command -v pyenv 1&gt;/dev/null 2&gt;&1; then<br>
+ eval "$(pyenv init -)"<br>
+fi</p>
+</blockquote>
+<p>b. Create or modify <code>~/.zshrc</code> and include:</p>
+<blockquote>
+<p>export PATH="/usr/local/opt/tcl-tk/bin:$PATH"<br>
+export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"<br>
+export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"<br>
+export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"<br>
+if command -v pyenv 1&gt;/dev/null 2&gt;&1; then<br>
+ eval "$(pyenv init -)"<br>
+fi  </p>
+</blockquote>
+<p>Make sure the above paths match the ones in your system (if you didn't customise anything on your homebrew installation the paths should match). </p>
+<p>Restart the terminal and verify your path <code>echo $PATH</code>, you should be able to see .pyenv and tcl-tk directories there.</p>
+<h4>3. Install python</h4>
+<p>If you have python you will have to reinstall it to add tcl-tk configuration.</p>
+<p>a. it --with-tcl-tk works. Try (in our case we are installing python 3.8.2, but it can be any other python 3 version):</p>
+<div class="highlight"><pre><span></span><code><span class="err">pyenv install python 3.8.2 --with-tcl-tk</span>
+</code></pre></div>
+
+<p>If it doesn't work don't try to install python via brew, since this will mess up your environment. Rather proceed with option 3.b.</p>
+<p>b. Hardcoded installation.<br>
+Modify the <code>pyenv</code> python-build script. You will find it in <code>/usr/local/opt/pyenv/plugins/python-build/bin</code>. Open <code>python-build</code> and find the line that contains the Configuration options:</p>
+<blockquote>
+<p>$CONFIGURE_OPTS ${!PACKAGE_CONFIGURE_OPTS} "${!PACKAGE_CONFIGURE_OPTS_ARRAY}" || return 1</p>
+</blockquote>
+<p>and replace if with:</p>
+<blockquote>
+<p>$CONFIGURE_OPTS --with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6' ${!PACKAGE_CONFIGURE_OPTS} "${!PACKAGE_CONFIGURE_OPTS_ARRAY}" || return 1</p>
+</blockquote>
+<p>Save changes and now you will be able to install pyhton</p>
+<div class="highlight"><pre><span></span><code><span class="err">pyenv install python 3.8.2</span>
+</code></pre></div>
+
+<h4>4. Change global python and test it</h4>
+<p>Check the versions of python installed</p>
+<div class="highlight"><pre><span></span><code><span class="err">pyenv versions</span>
+</code></pre></div>
+
+<p>Depending on what was your global python option before, you will see an '*' in front of one of the options. You will now select the newly installed python to be used as the global one.</p>
+<div class="highlight"><pre><span></span><code><span class="err">pyenv global 3.8.2</span>
+</code></pre></div>
+
+<p>Next step is to verify that indeed the new python is your default python by running:</p>
+<div class="highlight"><pre><span></span><code><span class="err">pyhton -V</span>
+</code></pre></div>
+
+<p>If everything went well you will see your python version displayed (in our case 3.8.2) if not yu may want to take a look to <a href="https://github.com/pyenv/pyenv">pyenv known issues and documentation</a>.</p>
+<p>Finally, its time to try out tkinter. Run:</p>
+<div class="highlight"><pre><span></span><code><span class="err">python -m tkinter -c &#39;tkinter._test()&#39;</span>
+</code></pre></div>
+
+<p>A small window will pop up to your screen, click QUIT to exit.</p>
+<h3>Via python.org</h3>
+<p>All current installers for macOS downloadable from <a href="https://www.python.org/download/mac/tcltk/">python.org</a> supply their own private copies of Tcl/Tk. So no need to do something else. You can also install ActiveTcl via their <a href="http://www.activestate.com/activetcl/downloads">website</a>.</p>
+<h2>Test tkinter for Windows Users</h2>
+<p>To test <code>tkinter</code> you can simply run <a href="https://tkdocs.com/tutorial/install.html#installwin">see offcial documentation</a>: </p>
+<div class="highlight"><pre><span></span><code><span class="err">python -m tkinter -c &#39;tkinter._test()&#39;</span>
+</code></pre></div>
+
+<p>A small window will pop up to your screen, click QUIT to exit.</p>
+<h2>Create a Simple GUI</h2>
+<p>I will cover a general way to create a script for a GUI and a simple way to wrap it in a function for re-usability.</p>
+<blockquote>
+<p>We will create a user interface that request credentials to "log in".</p>
+</blockquote>
+<h3>1. Create Window</h3>
+<p>Initialize a tkinter.Tk object, that is a root window. </p>
+<blockquote>
+<p>Every tkinter application must have a root window.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>2. Modify Window Attributes</h3>
+<p>It is possible to modify aspects fo the window, like size, position, title among others. These attributes are not mandatory if you are not sure of the size of window you can avoid modifying its geometry and the final outcome will have the size that contains all contents.</p>
+<blockquote>
+<p>For our "Log in" example, we will put a title and a fix size of 500 x 300 pp. A good practice is to make the windows appear on top of any other open, so that the user don't miss it.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># Modify window title</span>
+<span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log in&#39;</span><span class="p">)</span>
+<span class="c1"># Define window size</span>
+<span class="n">window</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;500X300&quot;</span><span class="p">)</span>
+<span class="c1"># Display window on top of all open windows</span>
+<span class="n">window</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s2">&quot;-topmost&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>3. Declare User Input Variables</h3>
+<p>To request input from a user is needed to initialize variables that can collect it. Possible types are linked to basic variable types like String, Boolean, Double or Int.</p>
+<blockquote>
+<p>For our example we require 2 string variables; one for email and another one for the password</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">user_mail</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+<span class="n">user_pass</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>4. Create Labels for User Input and Arrange them</h3>
+<p>It is important to let the user know what input do we require from them in each field. This can be achieved by defining <strong>Labels</strong> and <strong>Entries</strong>. There are two ways to specify the way the labels and entries will be shown in the window:
+- By <strong>pack</strong>. This will organize the objects and show them sequentially.
+- By <strong>grid</strong>. This provides flexibility to specify the desired location using rows and columns.</p>
+<blockquote>
+<p>We will use the grid method in our example. We declare labels and entries in pairs, the user label requesting "User email" will be shown in row 0, column 0, its entry in the same row, but column 1. A similar thing is defined for password, however for the password entry we set the parameter show to '*' so that the password is masked.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># Request user email</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">user_mail</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Request password (masked)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">user_pass</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<h3>5. Add Buttons</h3>
+<p>For a better user interaction it is possible to define and include buttons so that the user can submit, run, accept, cancel,... the execution. Each button requires its own definition and command that specifies what to do when clicked.</p>
+<blockquote>
+<p>We will include a submit and a cancel buttons that will help us either to terminate the process or to continue with the credentials provided</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">winroot</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Submit&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">user_click</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">))</span><span class="o">.</span>\
+        <span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">winroot</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Cancel&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">user_click</span><span class="p">(</span><span class="s1">&#39;cancel&#39;</span><span class="p">))</span><span class="o">.</span>\
+        <span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+<h4>5.1 Buttons command</h4>
+<p>The command parameter in the Button class, allows you to pass a function to define what process to execute once the button is clicked.</p>
+<blockquote>
+<p>We create a function that changes a global variable that let us know if the button option was cancel or not. We destroy the window after the interaction.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">u_selection</span> <span class="o">=</span> <span class="s1">&#39;submit&#39;</span>
+<span class="k">def</span> <span class="nf">user_click</span><span class="p">(</span><span class="n">button_id</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">u_selection</span>
+    <span class="k">if</span> <span class="n">button_id</span> <span class="o">==</span> <span class="s1">&#39;cancel&#39;</span><span class="p">:</span>
+        <span class="n">u_selection</span> <span class="o">=</span> <span class="s1">&#39;cancel&#39;</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>6. Display the window</h3>
+<p>To display the window, it's needed to block any other python process so that it waits for window's result.</p>
+<blockquote>
+<p>You can call the method mainloop direclty from the tkinter library or to the window object created. In our case we will call directly the method to avoid issues when trying to quit the window.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">tk</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</code></pre></div>
+
+<h3>GUI Function</h3>
+<p>All the components describe above can be wrapped in a function that can be re-usable or if preferred a class that can be extended (npt covered here).</p>
+<blockquote>
+<p>An example of a function that retrieves Log in credentials from user is:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_log_in</span><span class="p">(</span><span class="n">win_title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span><span class="s2">&quot;Log in&quot;</span><span class="p">,</span> 
+               <span class="n">win_geometry</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Log in Credentials</span>
+<span class="sd">    Retreive user credientials</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    win_title: str</span>
+<span class="sd">        Window title. Default value is &quot;Log in&quot;</span>
+<span class="sd">    win_geometry: str</span>
+<span class="sd">        Window geometry with format &quot;&lt;number&gt;x&lt;number&gt;&quot;. Default value is None </span>
+<span class="sd">        which will provide the minimum size.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    user selection: sumbit or cancel, user email and user password. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">user_click</span><span class="p">(</span><span class="n">button_id</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">u_selection</span>
+        <span class="k">nonlocal</span> <span class="n">window</span>
+        <span class="k">if</span> <span class="n">button_id</span> <span class="o">==</span> <span class="s1">&#39;cancel&#39;</span><span class="p">:</span>
+            <span class="n">u_selection</span> <span class="o">=</span> <span class="s1">&#39;cancel&#39;</span>
+        <span class="n">window</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+
+    <span class="n">window</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">u_selection</span> <span class="o">=</span> <span class="s1">&#39;submit&#39;</span>
+
+    <span class="c1"># Modify Geometry</span>
+    <span class="k">if</span> <span class="n">win_geometry</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> 
+        <span class="n">window</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="n">win_geometry</span><span class="p">)</span>
+    <span class="c1"># Title</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">win_title</span><span class="p">)</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s2">&quot;-topmost&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Request user email</span>
+    <span class="n">user_mail</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">user_mail</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Request password (masked)</span>
+    <span class="n">user_pass</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">user_pass</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Display Buttons</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Submit&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">user_click</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">))</span><span class="o">.</span>\
+        <span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Cancel&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">user_click</span><span class="p">(</span><span class="s1">&#39;cancel&#39;</span><span class="p">))</span><span class="o">.</span>\
+        <span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">tk</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">u_selection</span><span class="p">,</span> <span class="n">user_mail</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">user_pass</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://Christian-Cardone.github.io/tag/python.html">Python</a>
+      <a href="https://Christian-Cardone.github.io/tag/tkinter.html">tkinter</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'christian-cardone';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://Christian-Cardone.github.io/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Christian Cardone ",
+  "url" : "https://Christian-Cardone.github.io",
+  "image": "/images/Christian.jpg",
+  "description": "Data Scientist. I'm currently working as a Chief Data Scientist at Perfect Channel where I develop stochastic mechanisms for auction marketplaces"
+}
+</script>
+
+
+</body>
+</html>
